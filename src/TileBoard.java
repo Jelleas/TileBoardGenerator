@@ -5,21 +5,21 @@ import java.util.Random;
  * tiles, and keeps the dimensions of all tiles unique.
  * @author Jelle van Assema
  */
-public class TileField {
+public class TileBoard {
 	private Tile[][] field;
 	private int width, height;
 	private DivisibleTileCollection tiles;
 	Random rand;
 
-	public TileField(int width, int height) {
+	public TileBoard(int width, int height) {
 		this(width, height, new Random());
 	}
 	
-	public TileField(int width, int height, long seed) {
+	public TileBoard(int width, int height, long seed) {
 		this(width, height, new Random(seed));
 	}
 	
-	public TileField(int width, int height, Random rand) {
+	public TileBoard(int width, int height, Random rand) {
 		this.rand = rand;
 		this.width = width;
 		this.height = height;
