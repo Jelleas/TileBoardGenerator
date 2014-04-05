@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Generator for boards filled with tiles. These tiles all have unique sizes
  * and are created randomly.
@@ -26,8 +28,34 @@ public class TileBoardGenerator {
 	 * @return board
 	 */
 	public static TileBoard generate(int width, int height, int nTiles) {
-		TileBoard field = new TileBoard(width, height);
-		
+		return generate(width, height, nTiles, new Random());
+	}
+	
+	/**
+	 * Generate a board with dimensions width, height and randomly put tiles
+	 * on the board, until none of the tiles can be cut down into two smaller
+	 * portions or the limit nTiles is reached. Seeds the random generator.
+	 * @param width
+	 * @param height
+	 * @param nTiles
+	 * @return board
+	 */
+	public static TileBoard generate(int width, int height, int nTiles, long seed) {
+		return generate(width, height, nTiles, new Random(seed));
+	}
+	
+	/**
+	 * Generate a board with dimensions width, height and randomly put tiles
+	 * on the board, until none of the tiles can be cut down into two smaller
+	 * portions or the limit nTiles is reached. Uses the random generator supplied.
+	 * @param width
+	 * @param height
+	 * @param nTiles
+	 * @return board
+	 */
+	public static TileBoard generate(int width, int height, int nTiles, Random rand) {
+		TileBoard field = new TileBoard(width, height, rand);
+				
 		while(field.getNumTiles() < nTiles && !field.isFinished())
 			field.splitRandomTile();
 		

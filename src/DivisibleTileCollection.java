@@ -137,7 +137,7 @@ public class DivisibleTileCollection {
 		}
 		
 		// Shuffle dimensions in order to pick a random split.
-		Collections.shuffle(dimensions);
+		Collections.shuffle(dimensions, rand);
 		
 		// Return first set of dimensions that is possible.
 		for (int[][] dimension : dimensions)
